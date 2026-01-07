@@ -4,7 +4,6 @@ import flask from Flask
 def home():
     return "PrePilot is LIVE on Azure"
 application = app
-if __name__ == "__main__":
-    app.run()
+
 
 
