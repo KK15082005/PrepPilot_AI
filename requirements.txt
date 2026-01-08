@@ -1,4 +1,5 @@
 streamlit
 openai
-pythin-dotenv
+python-dotenv
+
 
