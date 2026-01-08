@@ -14,7 +14,7 @@ from openai import AzureOpenAI
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_KEY"),
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_version="2025-04-01-preview"
+    api_version="2024-02-15-preview"
 )
 
 st.set_page_config(
@@ -50,19 +50,11 @@ if user_input:
 
     with st.spinner("Thinking..."):
         response = client.chat.completions.create(
-            model="gpt-5.2-chat",  
+            model=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
             messages=st.session_state.messages
         )
 
     reply = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
-
-
-
-
-
-
-
-
 
