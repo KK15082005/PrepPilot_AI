@@ -6,49 +6,57 @@
 # application = app
 # if __name__ == "__main__":
 #     app.run(host="0.0.0.0" , port=8000)
+import streamlit as st
+import os
+from openai import AzureOpenAI
 
-from flask import Flask, render_template, request, jsonify
+# ---------------- CONFIG ----------------
+client = AzureOpenAI(
+    api_key=os.getenv("AZURE_OPENAI_KEY"),
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    api_version="2025-04-01-preview"
+)
 
-app = Flask(_name_)
+st.set_page_config(
+    page_title="PrepPilot AI",
+    page_icon="🎓",
+    layout="centered"
+)
 
-# ---------- PAGE ROUTES ----------
+# ---------------- SESSION STATE ----------------
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are PrepPilot, a calm, supportive career mentor for BTech students. "
+                "You help with career paths, internships, jobs, skill roadmaps and confidence."
+            )
+        }
+    ]
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+# ---------------- UI ----------------
+st.title("🎓 PrepPilot AI")
+st.write("Career-focused AI mentor powered by Azure OpenAI")
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
+for msg in st.session_state.messages[1:]:
+    role = "🧑 You" if msg["role"] == "user" else "🤖 PrepPilot"
+    st.markdown(f"*{role}:* {msg['content']}")
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
+user_input = st.chat_input("Ask PrepPilot...")
 
-@app.route("/resources")
-def resources():
-    return render_template("resources.html")
+if user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
 
-@app.route("/opportunities")
-def opportunities():
-    return render_template("opportunities.html")
+    with st.spinner("Thinking..."):
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",  # or your deployed model name
+            messages=st.session_state.messages
+        )
 
-@app.route("/studyplanner")
-def studyplanner():
-    return render_template("studyplanner.html")
-
-# ---------- CHATBOT API ----------
-
-@app.route("/chat", methods=["POST"])
-def chat():
-    user_msg = request.json.get("message")
-
-    # TEMP LOGIC (safe for MVP)
-    bot_reply = f"PrepPilot says: {user_msg}"
-
-    return jsonify({"reply": bot_reply})
-
-application = app
+    reply = response.choices[0].message.content
+    st.session_state.messages.append({"role": "assistant", "content": reply})
+    st.rerun()
 
 
 
