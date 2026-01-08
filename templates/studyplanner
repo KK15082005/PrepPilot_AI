@@ -14,16 +14,16 @@
         <nav class="navbar">
         <div class="navbar-left">
           <a class="logo" href="index.html">
-            <img src="logo.png" alt="PrepPilot Logo " class="logo-img"/>
+            <img src="/static/logo.png" alt="PrepPilot Logo " class="logo-img"/>
           </a>
         </div >
         <div class="navbar-right">
           <ul class="nav-links">
-            <li><a href="dashboard">Dashboard</a></li>
-            <li><a href="studyplanner">Plan</a></li>
-            <li><a href="resources">Resources</a></li>
-            <li><a href="opportunities">Opportunities</a></li>
-            <li><a href="profile" >Profile</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/studyplanner">Plan</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/opportunities">Opportunities</a></li>
+            <li><a href="/profile" >Profile</a></li>
             <li><a href="/chatbot" class="btn small">AI Assistant</a></li>
           </ul>
         </div>
