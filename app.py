@@ -50,11 +50,12 @@ if user_input:
 
     with st.spinner("Thinking..."):
         response = client.chat.completions.create(
-            model=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
+            model="gpt-5.2-chat",
             messages=st.session_state.messages
         )
 
     reply = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
+
 
