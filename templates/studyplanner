@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Planner - PrepPilot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="site-header">
+    <div class="header-inner">
+        <nav class="navbar">
+        <div class="navbar-left">
+          <a class="logo" href="index.html">
+            <img src="logo.png" alt="PrepPilot Logo " class="logo-img"/>
+          </a>
+        </div >
+        <div class="navbar-right">
+          <ul class="nav-links">
+            <li><a href="dashboard">Dashboard</a></li>
+            <li><a href="studyplanner">Plan</a></li>
+            <li><a href="resources">Resources</a></li>
+            <li><a href="opportunities">Opportunities</a></li>
+            <li><a href="profile" >Profile</a></li>
+            <li><a href="/chatbot" class="btn small">AI Assistant</a></li>
+          </ul>
+        </div>
+        </nav>
+        <button id="mobileToggle" class="mobile-toggle">☰</button>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<section class="container" style="padding-top:40px;">
+    <h2 style="font-size:32px; font-weight:700;">Your Study Planner</h2>
+    <p style="color:#4b6b8a;">Organize and track your daily tasks using our LinkedList-powered task manager.</p>
+
+    <!-- Add task -->
+    <div class="task-input-box">
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button class="btn primary" onclick="addTask()">Add</button>
+        <button onclick="importAI()">Import AI Roadmap</button>
+    </div>
+
+    <!-- Task list -->
+    <div id="taskList" class="task-list"></div>
+
+    <!-- Progress -->
+    <div class="planner-progress-box">
+        <h3>Today's Completion Progress</h3>
+
+        <div class="progress-circle" style="--percent:0;" id="plannerProgress">
+            <svg viewBox ="0 0 120 120">
+
+                <circle class="bg" cx="60" cy="60" r="50"></circle>
+                <circle class="progress" cx="60" cy="60" r="50"></circle>
+            </svg>
+
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+
+</section>
+
+<script src="/static/planner.js"></script>
+
+</body>
+</html>
+
