@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - PrepPilot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="site-header">
+    <div class="header-inner">
+        <nav class="navbar">
+        <div class="navbar-left">
+          <a class="logo" href="index.html">
+            <img src="logo.png" alt="PrepPilot Logo " class="logo-img"/>
+          </a>
+        </div >
+        <div class="navbar-right">
+          <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="studyplanner.html">Plan</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="opportunities.html">Opportunities</a></li>
+            <li><a href="profile.html" >Profile</a></li>
+          </ul>
+        </div>
+        </nav>
+
+        <button id="mobileToggle" class="mobile-toggle">☰</button>
+    </div>
+</header>
+
+<!-- DASHBOARD CONTENT -->
+<section class="container" style="padding-top:40px;">
+
+    <h2 style="font-size:32px; font-weight:700; color:#0b1d33;">Welcome, Achiever 👋</h2>
+    <p style="color:#4b6b8a;">Your ultimate plan to fulfill your dream begins today.</p>
+
+    <div class="dashboard-grid">
+
+        <!-- CARD 1 -->
+        <div class="dash-card">
+            <h3>Today's Plan</h3>
+            <p>One more step toward your dream. Stay calm, stay focused, keep going.</p>
+            <button class="btn primary" onclick="window.location.href='studyplanner.html'">
+                View Plan →
+            </button>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="dash-card">
+            <h3>Your PrepPilot Suggestions</h3>
+            <p>Your weekly insights will appear here soon.</p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="dash-card">
+            <h3>Your Progress</h3>
+            <div class="progress-circle"  style="--percent: USER_PROGRESS;">
+            <!-- <svg>
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#29d9ff"/>
+                    <stop offset="100%" stop-color="#0aa7d8"/>
+                    </linearGradient>
+                </defs>
+
+                <circle class="bg" cx="60" cy="60" r="50"></circle>
+                <circle class="progress" cx="60" cy="60" r="50"></circle>
+            </svg> -->
+                <svg viewBox="0 0 120 120">
+                    <circle class="bg" cx="60" cy="60" r="50"></circle>
+                    <circle class="progress" cx="60" cy="60" r="50"></circle>
+                </svg>
+
+                <div id="profileProgressText" class="progress-text">0%</div>
+            </div>
+        </div>
+            <p>
+                See how much you have grown.  
+                <br><br>1. Believe in Yourself — <b>You are already ahead of many.</b>  
+                <br>2. Be Consistent — <b>The ultimate key to success.</b>  
+                <br>3. Listen to everyone, but do what feels right for *you*.
+            </p>
+            <h4 style="margin-top:10px; font-weight:600;">You focus on doing — God will give you success.</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
